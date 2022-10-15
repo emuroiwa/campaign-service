@@ -9,6 +9,7 @@ use App\Repository\CampaignRepositoryInterface;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class CampaignController extends Controller
 {
@@ -43,10 +44,11 @@ class CampaignController extends Controller
                 "data" => ''
             ], Response::HTTP_CREATED);
         } catch (\Throwable $th) {
+            Log::error(__METHOD__ . $th->getMessage());
             return response($th->getMessage(), Response::HTTP_BAD_REQUEST);
         }
     }
-    
+
     /**
      * @OA\Get(
      *     path="/api/v1/campaigns",

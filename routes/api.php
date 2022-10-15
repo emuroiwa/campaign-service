@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\CampaignController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'v1'], static function () {
-    Route::post('campaign', [CampaignController::class, 'create'])->name('create-campaign');
-    Route::get('campaigns', [CampaignController::class, 'listCampaigns'])->name('list-campaign');
+Route::group(['prefix' => 'v1', 'middleware' => 'throttle:3'], static function () {
+    Route::group(['middleware' => 'throttle:3'], static function () {
+        Route::post('campaign', [CampaignController::class, 'create'])->name('campaign.create');
+    });
+    Route::get('campaigns', [CampaignController::class, 'listCampaigns'])->name('campaign.list');
 });
