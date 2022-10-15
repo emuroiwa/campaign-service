@@ -6,19 +6,21 @@ namespace App\Repository\Eloquent;
 
 use App\Models\Campaign;
 use App\Repository\CampaignRepositoryInterface;
-use Iterator;
+use Illuminate\Support\Collection;
 
 final class CampaignRepository implements CampaignRepositoryInterface
 {
     use CommonQueriesTrait;
 
-    public function __construct(private Campaign $Campaign)
+    public function __construct(private Campaign $campaign)
     {
     }
 
-    public function listForSelect(): Iterator
+    public function listCampaigns(): Collection
     {
-        return $this->queryForSelect($this->country, 'countryId', 'name');
+        return $this->campaign::select('title', 'cover_image', 'uri')
+            ->get()
+            ->random(5);
     }
 
     public function save(Campaign $campaign): void

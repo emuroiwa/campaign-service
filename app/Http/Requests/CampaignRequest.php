@@ -26,12 +26,12 @@ class CampaignRequest extends FormRequest
     public function rules()
     {
         return [
-            'campaign_catergory_id' => 'required|numeric|max:191',
-            'currency_id' => 'required|numeric|max:191',
+            'campaign_catergory_id' => 'required|numeric|min:1',
+            'currency_id' => 'required|numeric|min:1',
             'title' => 'required',
             'uri' => 'required',
             'description' => 'required',
-            'goal_amount' => 'required|numeric|max:191',
+            'goal_amount' => 'required|numeric|min:1',
         ];
     }
 

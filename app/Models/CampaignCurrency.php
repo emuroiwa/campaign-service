@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CampaignCategory extends Model
+class CampaignCurrency extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title', 'description'
+        'iso_code', 'description'
     ];
 }

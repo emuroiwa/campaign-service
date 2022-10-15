@@ -1,7 +1,7 @@
 version: '3.8'
 
 networks:
-  campaign-service-network:
+  bmn-ms-network:
 
 volumes:
   app-data:
@@ -17,7 +17,7 @@ services:
       - ./:/var/www
       - .docker/nginx:/etc/nginx/conf.d
     networks:
-      campaign-service-network:
+      bmn-ms-network:
 
   backend-campaign-service:
     build:
@@ -28,4 +28,4 @@ services:
       - ./:/var/www
       - .docker/php/php.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
-      campaign-service-network:
+      bmn-ms-network:

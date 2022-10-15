@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('payout_type')->nullable();
             $table->string('cover_image')->nullable();
             $table->foreign('campaign_catergory_id')->references('id')->on('campaign_categories')->onDelete('cascade');
-            $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');
+            $table->foreign('currency_id')->references('id')->on('campaign_currencies')->onDelete('cascade');
             $table->timestamps();
         });
     }
