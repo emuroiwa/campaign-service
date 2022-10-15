@@ -11,7 +11,12 @@ use Tests\TestCase;
 class CampaignTest extends TestCase
 {
     use RefreshDatabase;
-
+    
+    /**
+     * test_if_campaign_is_created
+     *
+     * @return void
+     */
     public function test_if_campaign_is_created()
     {
         $campaignCurrency = CampaignCurrency::factory()->create();
@@ -21,15 +26,20 @@ class CampaignTest extends TestCase
             'campaign_catergory_id' => $campaignCategory->id,
             'currency_id' => $campaignCurrency->id,
             'title' => fake()->word(),
-            'uri' => fake()->word(), 
+            'uri' => fake()->word(),
             'goal_amount' => fake()->randomNumber(4),
             'description' => fake()->paragraph(2),
         ]);
- 
+
         $response
             ->assertStatus(201);
     }
-
+    
+    /**
+     * test_get_campaign
+     *
+     * @return void
+     */
     public function test_get_campaign()
     {
         CampaignCurrency::factory()->create();

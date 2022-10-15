@@ -35,7 +35,6 @@ class CampaignRequest extends FormRequest
         ];
     }
 
-
     /**
      * failedValidation
      *
