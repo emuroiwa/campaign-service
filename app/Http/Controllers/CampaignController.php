@@ -46,6 +46,7 @@ class CampaignController extends Controller
             return response($th->getMessage(), Response::HTTP_BAD_REQUEST);
         }
     }
+    
     /**
      * @OA\Get(
      *     path="/api/v1/campaigns",

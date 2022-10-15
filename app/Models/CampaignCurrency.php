@@ -11,4 +11,9 @@ class CampaignCurrency extends Model
     protected $fillable = [
         'iso_code', 'description'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
